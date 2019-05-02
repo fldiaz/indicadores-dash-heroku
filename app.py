@@ -2,7 +2,6 @@ import requests
 import urllib.parse
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 
 import plotly.offline as pyo
 import plotly.graph_objs as go
