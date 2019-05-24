@@ -141,6 +141,7 @@ layout = go.Layout(
     yaxis = {'title': 'indice base100= Dic2015'},
     legend=dict(orientation="h", traceorder='normal'))
 
+tipodecambio = go.Figure(data=tcrm2,layout=layout)
 tasasdeint=pd.read_csv(get_api_call(['89.1_TIAC_0_0_26', '89.1_TIB_0_0_20', '89.1_TIC_0_0_18', '89.1_TIPF35D_0_0_35'], format="csv", start_date=2015, limit=5000), index_col='indice_tiempo')
 
 tasasdeint.rename(columns={'tasas_interes_adelantos_cc': 'Adel.Cta.Cte',
@@ -184,8 +185,10 @@ layouttasas = go.Layout(
     xaxis = {'title': 'Período'},
     yaxis = {'title': '%'},
     legend=dict(orientation="h", traceorder='normal'))
+tasasint = go.Figure(data=tasas,layout=layouttasas)
+
 reservas=pd.read_csv(get_api_call(['174.1_RRVAS_IIOS_0_0_60'], format="csv", limit=5000), index_col='indice_tiempo', decimal=',')
-reservas.columns
+
 reservas.rename(columns={'reservas_internacionales_bcra_prom_mensual_de_saldos_diarios':'Reservas BCRA'},inplace=True)
 
 # create traces
@@ -198,6 +201,7 @@ layout = go.Layout(
     xaxis = {'title': 'Período'},
     yaxis = {'title': 'en millones de US$'},
     legend=dict(orientation="h", traceorder='normal'))
+
 depoyprest= pd.read_csv(get_api_call([
 '174.1_DSITOS_S_0_0_19',
 '174.1_PTAMOS_S_0_0_19'], format="csv", start_date=2005, limit=5000), index_col='indice_tiempo')
@@ -213,6 +217,8 @@ layout = go.Layout(
     title = 'Variación anual de los depósitos y préstamos ',
     xaxis = {'title': 'Período'},
     yaxis = {'title': '%'})
+
+emae=pd.read_csv(get_api_call(['143.3_NO_PR_2004_A_28','143.3_NO_PR_2004_A_31'], format="csv", start_date='2005',limit=5000), index_col='indice_tiempo')
 
 pib= pd.read_csv(get_api_call(['9.2_PP2_2004_T_16'], format="csv", limit=5000), index_col='indice_tiempo')
 pibxcapita=pd.read_csv(get_api_call(['9.1_IPC_2004_A_25'], format="csv", limit=5000), index_col='indice_tiempo')
@@ -233,7 +239,6 @@ data = [go.Bar(
     x = componetespib.index,
     y = componetespib[col], name = col) for col in componetespib.columns]
 
-
 layout = go.Layout(
     title = 'Oferta y Demanda globales. Valores Trimestrales',
     xaxis = {'title': 'Período'},
@@ -243,7 +248,6 @@ layout = go.Layout(
 data = [go.Bar(
     x = componetespib.index,
     y = vartrimestral(componetespib[col])*100, name = col) for col in componetespib.columns]
-
 
 layout = go.Layout(
     title = 'Oferta y Demanda globales.Oferta y demanda globales. Variación porcentual respecto a igual período del año anterior.',
