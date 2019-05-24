@@ -2,11 +2,29 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
-
 from app import app
 #from app import server
 from layouts import inflacion, Dinero, Empleo, Actividad, SectorPúblico
 
+app.index_string = ''' 
+<!DOCTYPE html>
+<html>
+    <head>
+        {%metas%}
+        <title>Stark Performance Marketing Report</title>
+        {%favicon%}
+        {%css%}
+    </head>
+    <body>
+        {%app_entry%}
+        <footer>
+            {%config%}
+            {%scripts%}
+        </footer>
+        <div>Stark Performance Marketing Report</div>
+    </body>
+</html>
+'''
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
@@ -14,6 +32,7 @@ app.layout = html.Div([
 ])
 
 ##hacer el indice
+
 index_page = html.Div([
     dcc.Link('Datos Inflación', href='/page-1'),
     html.Br(),
