@@ -3,28 +3,10 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 from app import app
-#from app import server
+#para ver en localhost tengo que sacarle la linea del server, acá y en app.
+from app import server
 from layouts import inflacion, Dinero, Empleo, Actividad, SectorPúblico
 
-app.index_string = ''' 
-<!DOCTYPE html>
-<html>
-    <head>
-        {%metas%}
-        <title>Stark Performance Marketing Report</title>
-        {%favicon%}
-        {%css%}
-    </head>
-    <body>
-        {%app_entry%}
-        <footer>
-            {%config%}
-            {%scripts%}
-        </footer>
-        <div>Stark Performance Marketing Report</div>
-    </body>
-</html>
-'''
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
@@ -33,8 +15,15 @@ app.layout = html.Div([
 
 ##hacer el indice
 
+
 index_page = html.Div([
-    dcc.Link('Datos Inflación', href='/page-1'),
+    html.H1('Indicadores Económicos de Argentina', style={'color': '#0085ad'}),
+    html.Div([
+        html.P('Elaboración propia en base a última información publicada, a través de la API de Series de Tiempo, por organismos de la Administración Pública Nacional.'),
+        html.P('Consultas: fldiaz@itba.edu.ar', style={'color': '#0085ad'})
+    ]),
+    html.Br(),
+    dcc.Link('Precios', href='/page-1'),
     html.Br(),
     dcc.Link('Empleo e Ingresos', href='/page-2'),
     html.Br(),
@@ -53,7 +42,7 @@ index_page = html.Div([
 ##hacer el indice como corresponde
 def display_page(pathname):
     if pathname == '/page-1':
-        return Inflacion
+        return inflacion
     elif pathname == '/page-2':
         return Empleo
     elif pathname == '/page-3':
