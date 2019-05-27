@@ -6,3 +6,5 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 #sacar server para ver en local
 server = app.server
 app.config.suppress_callback_exceptions = True
+if __name__ == '__main__':
+    app.run_server(debug=True)
