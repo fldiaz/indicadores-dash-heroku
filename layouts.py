@@ -93,7 +93,7 @@ traces2 = go.Scatter(
     x = ingresos.index,
     y = compute_anual_variation(ingresos['ing_antes_figurativos_2017']),
     mode = 'lines', line = dict(
-        width = 5, dash='dot'), name = 'Ingresos Tributarios')
+        width = 5, dash='dot'), name = 'Recursos Tributarios netos de copa')
 
 gastoseingresos = [traces, traces2]
 layout1 = go. Layout( title = '', xaxis = {'title': 'Período'}, yaxis = {'title': '% i.a'})
