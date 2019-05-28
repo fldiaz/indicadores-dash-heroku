@@ -30,17 +30,17 @@ def datos(df):
 
 
 #Actividad
-emae=pd.read_csv('/datos/emae.csv', index_col='indice_tiempo')
+emae=pd.read_csv('datos/emae.csv', index_col='indice_tiempo')
 emaeanual= compute_anual_variation(emae)*100
 emaeanual.rename(columns={'indice_serie_desestacionalizada': 'EMAE var. anual'}, inplace=True)
 x = compute_mensual_variation(emae)*100
 x.rename(columns={'indice_serie_desestacionalizada': 'EMAE var. mensual'}, inplace=True)
 emae=x.join(emaeanual)
 
-pib= pd.read_csv('/datos/pib.csv', index_col='indice_tiempo')
-pibxcapita=pd.read_csv('/datos/pibxcapita.csv', index_col='indice_tiempo')
+pib= pd.read_csv('datos/pib.csv', index_col='indice_tiempo')
+pibxcapita=pd.read_csv('datos/pibxcapita.csv', index_col='indice_tiempo')
 pib.rename(columns={'pib_precios_2004':'PIB a precios de 2004'}, inplace=True)
-componetespib= pd.read_csv('/datos/componetespib.csv', index_col='indice_tiempo')
+componetespib= pd.read_csv('datos/componetespib.csv', index_col='indice_tiempo')
 componetespib.rename(columns={'manda_global_consumo_priv':'Consumo Privado', 'demanda_global_consumo_publico':'Consumo Público',
        'demanda_global_exportacion': 'Exportaciones FOB', 'demanda_global_ibif_total': 'Formación bruta de capital fijo',
        'oferta_global_importacion':'Importaciones FOB '}, inplace=True)
@@ -64,8 +64,8 @@ layout = go.Layout(
     xaxis = {'title': 'Período'},
     yaxis = {'title': '%'}, barmode='stack')
 
-gfigurativos=pd.read_csv('/datos/gfigurativos.csv', index_col='indice_tiempo')
-ingresos=pd.read_csv('/datos/ingresos.csv', index_col='indice_tiempo')
+gfigurativos=pd.read_csv('datos/gfigurativos.csv', index_col='indice_tiempo')
+ingresos=pd.read_csv('datos/ingresos.csv', index_col='indice_tiempo')
 traces = go.Scatter(
     x = gfigurativos.index,
     y = compute_anual_variation(gfigurativos['gtos_primario_antes_figurativos_2017']),
@@ -82,13 +82,13 @@ traces2 = go.Scatter(
 gastoseingresos = [traces, traces2]
 layout1 = go. Layout( title = '', xaxis = {'title': 'Período'}, yaxis = {'title': '% i.a'})
 
-reca=pd.read_csv('/datos/reca.csv', index_col='indice_tiempo')
+reca=pd.read_csv('datos/reca.csv', index_col='indice_tiempo')
 #Inflacion anual
-ipcanual=pd.read_csv('/datos/ipcanual.csv', index_col='indice_tiempo')
+ipcanual=pd.read_csv('datos/ipcanual.csv', index_col='indice_tiempo')
 
 recaipc=reca.join(ipcanual)
-sup=pd.read_csv('/datos/sup.csv', index_col='indice_tiempo')#Superavit primarioMetodología 2017
-financiero=pd.read_csv('/datos/financiero.csv', index_col='indice_tiempo')#el déficit financiero -que incluye el pago de los intereses de la deuda pública- fue de $ 49.838 millones teniendo en relación a marzo de 2018 un aumento equivalente a 31,5%, y una reducción en términos reales de 15% i.a.
+sup=pd.read_csv('datos/sup.csv', index_col='indice_tiempo')#Superavit primarioMetodología 2017
+financiero=pd.read_csv('datos/financiero.csv', index_col='indice_tiempo')#el déficit financiero -que incluye el pago de los intereses de la deuda pública- fue de $ 49.838 millones teniendo en relación a marzo de 2018 un aumento equivalente a 31,5%, y una reducción en términos reales de 15% i.a.
 rdo=sup.join(financiero)
 rdo.rename(columns={'superavit_primario_2017': 'Rdo. Primario', 'resultado_fin_2017': 'Rdo. Financiero'}, inplace=True)
 datos=[go.Bar(
@@ -100,14 +100,14 @@ layout = go.Layout(
     yaxis = {'title': 'Millones de Pesos'})
 ###########################################################################
 # Create a Dash layout that contains a Graph component:
-ipc=pd.read_csv('/datos/ipc.csv', index_col='indice_tiempo')
+ipc=pd.read_csv('datos/ipc.csv', index_col='indice_tiempo')
 ipc=ipc*100
 ipc.rename(columns={'estacionales': 'Estacionales',
   'ipc_nucleo': 'Núcleo',
   'ipc_regulados': 'Regulados',
   'ipc_ng_nacional_tasa_variacion_mensual': 'Nivel General'}, inplace=True)
 
-ipcxcomponente= pd.read_csv('/datos/ipcxcomponente.csv', index_col='indice_tiempo')
+ipcxcomponente= pd.read_csv('datos/ipcxcomponente.csv', index_col='indice_tiempo')
 ipcxcomponente.rename(columns={'ipc_nivel_general_nacional': 'Nivel General',
        'ipc_alimentos_bebidas_no_alcoholicas_nacional': 'Alimentos y bebidas no alcohólicas',
        'ipc_bebidas_alcoholicas_tabaco_nacional': 'Bebidas alcohólicas y tabaco',
@@ -119,7 +119,7 @@ ipcxcomponente.rename(columns={'ipc_nivel_general_nacional': 'Nivel General',
        'ipc_salud_nacional': 'Salud', 'ipc_transporte_nacional': 'Transporte',
        'ipc_vivienda_agua_electricidad_combustibles_nacional' : 'Vivienda, agua,electricidad, gas y otros combustibles'}, inplace=True)
 
-infxzona=pd.read_csv('/datos/ipcxzona.csv', index_col='indice_tiempo')
+infxzona=pd.read_csv('datos/ipcxzona.csv', index_col='indice_tiempo')
 infxzona=infxzona*100
 infxzona.rename (columns={'ipc_ng_nacional_tasa_variacion_mensual': 'Nacional',
        'ipc_ng_cuyo_tasa_variacion_mensual': 'Cuyo',
@@ -170,14 +170,14 @@ inflacion = html.Div([
     ])
 
 #Indicadores de desempleo 42.3_EPH_PUNTUATAL_0_M_30 trimestral
-desocupacion= pd.read_csv('/datos/desocupacion.csv', index_col='indice_tiempo')
-asalariados=pd.read_csv('/datos/asalariados.csv', index_col='indice_tiempo')
+desocupacion= pd.read_csv('datos/desocupacion.csv', index_col='indice_tiempo')
+asalariados=pd.read_csv('datos/asalariados.csv', index_col='indice_tiempo')
 asalariados.rename(columns={'asalariados_pub_sin_estac':'Asalariados del sector público', 'asalariados_priv_sin_estac':'Asalariados del sector privado',
        'asalariados_casas_particulares_sin_estac': 'Asalariados de casas particulares',
        'independientes_autonomos_sin_estac': 'Independientes autónomos',
        'independientes_monotributo_sin_estac': 'Independientes con monotributo',
        'independientes_monotributo_social_sin_estac': 'Independientes con monotributo social'}, inplace=True)
-salarios=pd.read_csv('/datos/salarios.csv', index_col='indice_tiempo')
+salarios=pd.read_csv('datos/salarios.csv', index_col='indice_tiempo')
 salarios.columns
 salarios.rename(columns={'sector_privado_registrado':'Sector Privado Registrado', 'sector_privado_no_registrado':'Sector Privado no Registrado',
        'sector_publico':'Sector Público', 'ipc_2016_nivel_general': 'Nivel General de Precios'}, inplace=True)
@@ -248,7 +248,7 @@ Empleo=html.Div([
     dcc.Link('Indice', href='/index_page')
 ])
 #Dinero y Bancos
-tc=pd.read_csv('/datos/tc.csv', index_col='indice_tiempo')
+tc=pd.read_csv('datos/tc.csv', index_col='indice_tiempo')
 # create traces
 tc1= [go.Scatter(
     x = tc.index,
@@ -258,10 +258,10 @@ layout = go.Layout(
     xaxis = {'title': 'Período'},
     yaxis = {'title': 'pesos'},
     legend=dict(orientation="h", traceorder='normal'))
-tcrm=pd.read_csv('/datos/tcrm.csv', index_col='indice_tiempo')
-tcrusa=pd.read_csv('/datos/tcrusa.csv', index_col='indice_tiempo')
-tcrbra=pd.read_csv('/datos/tcrbra.csv', index_col='indice_tiempo')
-tcreuro=pd.read_csv('/datos/tcreuro.csv', index_col='indice_tiempo')
+tcrm=pd.read_csv('datos/tcrm.csv', index_col='indice_tiempo')
+tcrusa=pd.read_csv('datos/tcrusa.csv', index_col='indice_tiempo')
+tcrbra=pd.read_csv('datos/tcrbra.csv', index_col='indice_tiempo')
+tcreuro=pd.read_csv('datos/tcreuro.csv', index_col='indice_tiempo')
 tcrm1= go.Scatter(
     x = tcrm.index,
     y = tcrm['tipo_cambio_real_multilateral_actual'], mode = 'lines', name='Tipo de Cambio Real Multilateral',
@@ -294,7 +294,7 @@ layout = go.Layout(
     legend=dict(orientation="h", traceorder='normal'))
 tipodecambio = go.Figure(data=tcrm2,layout=layout)
 
-tasasdeint=pd.read_csv('/datos/tasasdeint.csv', index_col='indice_tiempo')
+tasasdeint=pd.read_csv('datos/tasasdeint.csv', index_col='indice_tiempo')
 tasasdeint.rename(columns={'tasas_interes_adelantos_cc': 'Adel.Cta.Cte',
        'tasas_interes_badlar': 'Badlar',
        'tasas_interes_call': 'Call', 'tasas_interes_plazo_fijo_30_59_dias': 'PF+60d'}, inplace=True)
@@ -331,10 +331,10 @@ layouttasas = go.Layout(
     yaxis = {'title': '%'},
     legend=dict(orientation="h", traceorder='normal'))
 tasasint = go.Figure(data=tasas,layout=layouttasas)
-depoyprest=pd.read_csv('/datos/depoyprest.csv', index_col='indice_tiempo')
+depoyprest=pd.read_csv('datos/depoyprest.csv', index_col='indice_tiempo')
 depoyprest.rename(columns={'depositos_totales_pesos': 'Depósitos', 'prestamos_totales_pesos': 'Préstamos'}, inplace=True)
 depoyprest=depoyprest/1000
-reservas=pd.read_csv('/datos/reservas.csv', index_col='indice_tiempo')
+reservas=pd.read_csv('datos/reservas.csv', index_col='indice_tiempo')
 reservas.rename(columns={'reservas_internacionales_bcra_prom_mensual_de_saldos_diarios':'Reservas BCRA'},inplace=True)
 
 Dinero=html.Div([
