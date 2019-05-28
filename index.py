@@ -6,7 +6,7 @@ from app import app
 #para ver en localhost tengo que sacarle la linea del server, acá y en app.
 from app import server
 from layouts import inflacion, Dinero, Empleo, Actividad, SectorPúblico
-
+import pandas as pd
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
@@ -17,11 +17,9 @@ app.layout = html.Div([
 
 
 index_page = html.Div([
-    html.H1('Indicadores Económicos de Argentina', style={'color': '#0085ad'}),
+    html.H1('Indicadores Económicos de Argentina', style={'color': '#0099e5'}),
     html.Div([
-        html.P('Elaboración propia en base a última información publicada, a través de la API de Series de Tiempo, por organismos de la Administración Pública Nacional.'),
-        html.P('Se actualiza diariamente'),
-        html.P('Consultas: fldiaz@itba.edu.ar', style={'color': '#0085ad'})
+        html.P('Elaboración propia en base a última información publicada, a través de la API de Series de Tiempo, por organismos de la Administración Pública Nacional.')
     ]),
     html.Br(),
     dcc.Link('Precios', href='/page-1'),
@@ -32,9 +30,10 @@ index_page = html.Div([
     html.Br(),
     dcc.Link('Actividad', href='/page-4'),
     html.Br(),
-    dcc.Link('Sector Público', href='/page-5')
-])
-
+    dcc.Link('Sector Público', href='/page-5'),
+    html.Br(),
+    html.P('Última actualización: '), pd.to_datetime('today'),
+    html.P('Consultas: fldiaz@itba.edu.ar', style={'color': '#0099e5'})])
 
 
 @app.callback(dash.dependencies.Output('page-content', 'children'),
