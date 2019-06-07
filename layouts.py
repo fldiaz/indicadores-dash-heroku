@@ -181,6 +181,7 @@ salarios=pd.read_csv('datos/salarios.csv', index_col='indice_tiempo')
 salarios.columns
 salarios.rename(columns={'sector_privado_registrado':'Sector Privado Registrado', 'sector_privado_no_registrado':'Sector Privado no Registrado',
        'sector_publico':'Sector Público', 'ipc_2016_nivel_general': 'Nivel General de Precios'}, inplace=True)
+cantdeasalariados=pd.read_csv('datos/cantdeasalariados', index_col='indice_tiempo')
 privado = go.Scatter(
     x = salarios.index,
     y = compute_anual_variation(salarios['Sector Privado Registrado']), mode='lines',
@@ -228,6 +229,15 @@ Empleo=html.Div([
         xaxis = {'title': 'Período'},
         yaxis = {'title': '% participación'},
         barmode= 'relative', barnorm='percent', legend=dict(orientation="h", traceorder='normal'))}),
+
+    dcc.Graph(id='cantdeasalariados', figure={'data':[go.Scatter(
+    x = cantdeasalariados.index,
+    y = cantdeasalariados[col], name=col) for col in cantdeasalariados.columns],
+    'layout': go.Layout(
+    title = 'Asalariados registrados sector privado CABA-PBA',
+    xaxis = {'title': 'Período'},
+    yaxis = {'title': 'Miles de Personas'},
+    legend=dict(orientation="h", traceorder='normal'))}),
 
     dcc.Graph(id='salarios', figure={'data': salario,
     'layout':go.Layout(
