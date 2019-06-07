@@ -181,7 +181,7 @@ salarios=pd.read_csv('datos/salarios.csv', index_col='indice_tiempo')
 salarios.columns
 salarios.rename(columns={'sector_privado_registrado':'Sector Privado Registrado', 'sector_privado_no_registrado':'Sector Privado no Registrado',
        'sector_publico':'Sector Público', 'ipc_2016_nivel_general': 'Nivel General de Precios'}, inplace=True)
-cantdeasalariados=pd.read_csv('datos/cantdeasalariados', index_col='indice_tiempo')
+cantdeasalariados=pd.read_csv('datos/cantdeasalariados.csv', index_col='indice_tiempo')
 privado = go.Scatter(
     x = salarios.index,
     y = compute_anual_variation(salarios['Sector Privado Registrado']), mode='lines',
