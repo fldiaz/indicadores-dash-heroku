@@ -23,6 +23,15 @@ def compute_mensual_variation(df):
 def vartrimestral(df):
     trimestral=(df/df.shift(4))-1
     return trimestral
+
+def diferenciamensual(df):
+    dato=(df-df.shift(1))
+    return dato
+
+def diferenciaanual(df):
+    dato=(df-df.shift(12))
+    return dato
+
 def datos(df):
     datos=pd.read_csv(get_api_call([df], format="csv", limit=5000), index_col='indice_tiempo')
     return datos
@@ -230,13 +239,13 @@ Empleo=html.Div([
         yaxis = {'title': '% participación'},
         barmode= 'relative', barnorm='percent', legend=dict(orientation="h", traceorder='normal'))}),
 
-    dcc.Graph(id='cantdeasalariados', figure={'data':[go.Scatter(
+    dcc.Graph(id='cantdeasalariados', figure={'data':[go.Bar(
     x = cantdeasalariados.index,
-    y = cantdeasalariados[col], name=col) for col in cantdeasalariados.columns],
+    y = diferenciaanual(cantdeasalariados[col])*1000, name=col) for col in cantdeasalariados.columns],
     'layout': go.Layout(
-    title = 'Asalariados registrados sector privado CABA-PBA',
+    title = 'Asalariados registrados sector privado CABA-PBA. Variación Anual',
     xaxis = {'title': 'Período'},
-    yaxis = {'title': 'Miles de Personas'},
+    yaxis = {'title': 'Personas'},
     legend=dict(orientation="h", traceorder='normal'))}),
 
     dcc.Graph(id='salarios', figure={'data': salario,
