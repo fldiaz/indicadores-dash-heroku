@@ -284,7 +284,7 @@ tcreuro=pd.read_csv('datos/tcreuro.csv', index_col='indice_tiempo')
 tcrm1= go.Scatter(
     x = tcrm.index,
     y = tcrm['tipo_cambio_real_multilateral_actual'], mode = 'lines', name='Tipo de Cambio Real Multilateral',
-    line = dict(width = 5, color = '#1c79c0'))
+    line = dict(width = 5, color = '#c01c94'))
 tcrusa1= go.Scatter(
     x = tcrusa.index,
     y = tcrusa['tipo_cambio_real_estados_unidos'], mode = 'lines', name='TCRM USA',
