@@ -351,10 +351,10 @@ layouttasas = go.Layout(
     legend=dict(orientation="h", traceorder='normal'))
 tasasint = go.Figure(data=tasas,layout=layouttasas)
 depoyprest=pd.read_csv('datos/depoyprest.csv', index_col='indice_tiempo')
-depoyprest.rename(columns={'depositos_totales_pesos': 'Depósitos', 'prestamos_totales_pesos': 'Préstamos'}, inplace=True)
+depoyprest.rename(columns={'depositos_totales_pesos_privado': 'Depósitos del Sector Privado', 'prestamos_al_sector_privado_pesos': 'Préstamos al Sector Privado'}, inplace=True)
 depoyprest=depoyprest/1000
 reservas=pd.read_csv('datos/reservas.csv', index_col='indice_tiempo')
-reservas.rename(columns={'reservas_internacionales_bcra_prom_mensual_de_saldos_diarios':'Reservas BCRA'},inplace=True)
+reservas.rename(columns={'reservas_internacionales_dolares':'Reservas BCRA'},inplace=True)
 
 Dinero=html.Div([
     dcc.Graph(id="tcrm", figure= {'data': tipodecambio,
@@ -376,7 +376,7 @@ Dinero=html.Div([
     x = reservas.index,
     y = reservas['Reservas BCRA'])],
         'layout': go.Layout(
-        title = 'Reservas BCRA, promedio mensual de saldos diarios',
+        title = 'Reservas BCRA, promedio de saldos diarios',
         xaxis = {'title': 'Período'},
         yaxis = {'title': 'en millones de US$'}, legend=dict(orientation="h", traceorder='normal'))}),
 
@@ -387,19 +387,29 @@ Dinero=html.Div([
     x = depoyprest.index,
     y = depoyprest[col], name = col) for col in depoyprest.columns],
     'layout':go.Layout(
-    title = 'Depósitos y Préstamos en pesos',
+    title = 'Depósitos y Préstamos del Sector Privado en pesos',
     xaxis = {'title': 'Período'},
     yaxis = {'title': 'millones de pesos'},
     legend=dict(orientation="h", traceorder='normal'))}),
 
     dcc.Graph(id='prestdepo', figure={'data':[go. Scatter(
     x = depoyprest.index,
-    y = compute_anual_variation(depoyprest[col]), name = col) for col in depoyprest.columns],
+    y = compute_anual_variation(depoyprest[col])*100, name = col) for col in depoyprest.columns],
     'layout': go.Layout(
     title = 'Variación i.a. de los depósitos y préstamos ',
     xaxis = {'title': 'Período'},
     yaxis = {'title': '%'},
     legend=dict(orientation="h", traceorder='normal'))}),
+
+    dcc.Graph(id='prestdepo/pib', figure={'data':[go. Bar(
+    x = depo_presta_pib.index,
+    y = depo_presta_pib[col], name = col) for col in depo_presta_pib.columns],
+    'layout': go.Layout(
+    title = 'Depósitos y Prestamos al SP respecto del PIB',
+    xaxis = {'title': 'Período'},
+    yaxis = {'title': '%'},
+    legend=dict(orientation="h", traceorder='normal'))}),
+
 
     html.Div(id='page-3-content'),
     dcc.Link('Inflación', href='/page-1'),
