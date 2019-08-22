@@ -355,6 +355,7 @@ depoyprest.rename(columns={'depositos_totales_pesos_privado': 'Depósitos del Se
 depoyprest=depoyprest/1000
 reservas=pd.read_csv('datos/reservas.csv', index_col='indice_tiempo')
 reservas.rename(columns={'reservas_internacionales_dolares':'Reservas BCRA'},inplace=True)
+depo_presta_pib=pd.read_csv('datos/depo_presta_pib.csv', index_col='indice_tiempo')
 
 Dinero=html.Div([
     dcc.Graph(id="tcrm", figure= {'data': tipodecambio,
