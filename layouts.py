@@ -149,11 +149,11 @@ inflacion = html.Div([
                 hovermode='closest')}),
     dcc.Graph(id='ipcxcomponente', figure={'data': [go.Scatter(
     x = ipcxcomponente.index,
-    y = ipcxcomponente[col],  mode = 'markers+lines', name=col) for col in ipcxcomponente.columns],
+    y = compute_anual_variation(ipcxcomponente[col])*100,  mode = 'markers+lines', name=col) for col in ipcxcomponente.columns],
                 'layout': go.Layout(
-                title = 'Índice de precios al consumidor. Según divisiones. Total nacional',
+                title = 'Var. Índice de precios al consumidor. Según divisiones. Total nacional',
                 xaxis = {'title': 'Período'},
-                yaxis = {'title': 'Indice Base 100=2016'},
+                yaxis = {'title': 'Var. últimos 12 meses'},
                 hovermode='closest', legend=dict(orientation="h", traceorder='normal'))}),
 
     dcc.Graph(id='ipcxzonas', figure={'data': [go.Scatter(
