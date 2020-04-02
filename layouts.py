@@ -187,9 +187,9 @@ asalariados.rename(columns={'asalariados_pub_sin_estac':'Asalariados del sector 
        'independientes_monotributo_sin_estac': 'Independientes con monotributo',
        'independientes_monotributo_social_sin_estac': 'Independientes con monotributo social'}, inplace=True)
 salarios=pd.read_csv('datos/salarios.csv', index_col='indice_tiempo')
-salarios.columns
-salarios.rename(columns={'sector_privado_registrado':'Sector Privado Registrado', 'sector_privado_no_registrado':'Sector Privado no Registrado',
-       'sector_publico':'Sector Público', 'ipc_2016_nivel_general': 'Nivel General de Precios'}, inplace=True)
+
+salarios.rename(columns={'indice_salarios_registrado_sector_privado':'Sector Privado Registrado', 'indice_salarios_no_registrado_sector_privado':'Sector Privado no Registrado',
+       'indice_salarios_registrado_sector_publico':'Sector Público', 'ipc_2016_nivel_general': 'Nivel General de Precios'}, inplace=True)
 cantdeasalariados=pd.read_csv('datos/cantdeasalariados.csv', index_col='indice_tiempo')
 privado = go.Scatter(
     x = salarios.index,
