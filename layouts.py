@@ -41,9 +41,9 @@ def datos(df):
 #Actividad
 emae=pd.read_csv('datos/emae.csv', index_col='indice_tiempo')
 emaeanual= compute_anual_variation(emae)*100
-emaeanual.rename(columns={'indice_serie_desestacionalizada': 'EMAE var. anual'}, inplace=True)
+emaeanual.rename(columns={'emae_desestacionalizada': 'EMAE var. anual'}, inplace=True)
 x = compute_mensual_variation(emae)*100
-x.rename(columns={'indice_serie_desestacionalizada': 'EMAE var. mensual'}, inplace=True)
+x.rename(columns={'emae_desestacionalizada': 'EMAE var. mensual'}, inplace=True)
 emae=x.join(emaeanual)
 
 pib= pd.read_csv('datos/pib.csv', index_col='indice_tiempo')
