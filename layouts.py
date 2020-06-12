@@ -354,7 +354,8 @@ depoyprest=pd.read_csv('datos/depoyprest.csv', index_col='indice_tiempo')
 depoyprest.rename(columns={'depositos_totales_pesos_privado': 'Depósitos del Sector Privado', 'prestamos_al_sector_privado_pesos': 'Préstamos al Sector Privado'}, inplace=True)
 depoyprest=depoyprest/1000
 reservas=pd.read_csv('datos/reservas.csv', index_col='indice_tiempo')
-reservas.rename(columns={'reservas_internacionales_dolares':'Reservas BCRA'},inplace=True)
+reservas.rename(columns={'reservas_internacionales_bcra_saldos':'Reservas BCRA'},inplace=True)
+
 depo_presta_pib=pd.read_csv('datos/depo_presta_pib.csv', index_col='indice_tiempo')
 
 Dinero=html.Div([
