@@ -271,7 +271,7 @@ tc=pd.read_csv('datos/tc.csv', index_col='indice_tiempo')
 # create traces
 tc1= [go.Scatter(
     x = tc.index,
-    y = tc['tipo_cambio_valuacion'], mode = 'lines', name='USD', line = dict(width = 5, color = '#1c79c0' ))]
+    y = tc['tipo_cambio_a3500'], mode = 'lines', name='USD', line = dict(width = 5, color = '#1c79c0' ))]
 layout = go.Layout(
     title = 'Tipo de Cambio BCRA',
     xaxis = {'title': 'Período'},
