@@ -376,7 +376,7 @@ Dinero=html.Div([
 
     dcc.Graph(id='reservas', figure={'data':[go.Bar(
     x = reservas.index,
-    y = reservas['Reservas BCRA'])],
+    y = reservas['reservas_internacionales_dolares'])],
         'layout': go.Layout(
         title = 'Reservas BCRA, promedio de saldos diarios',
         xaxis = {'title': 'Período'},
