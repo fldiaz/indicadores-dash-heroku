@@ -8,7 +8,7 @@ from app import server
 from layouts import inflacion, Dinero, Empleo, Actividad, SectorPúblico
 import pandas as pd
 
-app.layout = html.Div([
+app.layout = html.Div([ bgcolor="#1f2630"
     dcc.Location(id='url', refresh=False),
     html.Div(id='page-content')])
         #children=[
@@ -26,7 +26,7 @@ app.layout = html.Div([
 
 
 index_page = html.Div([
-    html.Img(id="logo", src="Logo.Cross.Validated.png"),
+    html.Img(id="logo", src=app.get_asset_url("Logo.Cross.Validated.png"),
     html.H4(children= 'Indicadores Económicos de Argentina', style={'color': '#0099e5'}),
     html.Div([
         html.P(
