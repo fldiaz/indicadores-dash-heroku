@@ -10,7 +10,7 @@ import pandas as pd
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
-        html.Div(id='page-content')])
+    html.Div(id='page-content')])
         #children=[
             #html.Img(id="logo", src="Logo.Cross.Validated.png"),
             #html.H4(children="Rate of US Poison-Induced Deaths"),
