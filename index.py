@@ -19,7 +19,7 @@ app.layout = html.Div([
     dcc.Location(id='url', refresh=False,
     children=[
         html.Div(
-            id="header",
+            id="page-content",#header
             children=[
                 html.Img(id="logo", src="Logo.Cross.Validated.png"),
                 html.H4(children="Rate of US Poison-Induced Deaths"),
