@@ -15,12 +15,12 @@ import pandas as pd
 # App layout
 
 app.layout = html.Div(
-    id="root",
+    id="url",
     children=[
         html.Div(
             id="header",
             children=[
-                html.Img(id="logo", src=app.get_asset_url("Logo.Cross.Validated.png")),
+                html.Img(id="logo", src="Logo.Cross.Validated.png"),
                 html.H4(children="Rate of US Poison-Induced Deaths"),
                 html.P(
                     id="description",
