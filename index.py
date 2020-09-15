@@ -33,7 +33,7 @@ index_page = html.Div([
     dcc.Link('Sector Público', href='/page-5'),
     html.Br(),
     html.P('Última actualización: '), pd.to_datetime('today'),
-    html.P('Consultas: fldiaz@itba.edu.ar', style={'color': '#0099e5'})])
+    html.P('Consultas: fldiaz@crossvalidated.com.ar', style={'color': '#0099e5'})])
 
 
 @app.callback(dash.dependencies.Output('page-content', 'children'),
