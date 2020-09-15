@@ -13,9 +13,10 @@ colors = {
 'text': '#FFFFFF'
 }
 
-app.layout = html.Div(style={'backgroundColor': colors['background']}, [
+app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
-    html.Div(id='page-content', children= 'Indicadores Económicos de Argentina', style={'color': '#0099e5'})])
+    html.Div(id='page-content', children= 'Indicadores Económicos de Argentina', style={'color': '#0099e5'})],
+    style={'backgroundColor': colors['background']})
         #children=[
             #html.Img(id="logo", src="Logo.Cross.Validated.png"),
             #html.H4(children="Rate of US Poison-Induced Deaths"),
@@ -53,7 +54,8 @@ index_page = html.Div([
     dcc.Link('Sector Público', href='/page-5'),
     html.Br(),
     html.P('Última actualización: '), pd.to_datetime('today'),
-    html.P('Consultas: fldiaz@crossvalidated.com.ar', style={'color': '#0099e5'})])
+    html.P('Consultas: fldiaz@crossvalidated.com.ar', style={'color': '#0099e5'}),
+    ])
 
 
 
