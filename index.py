@@ -20,7 +20,7 @@ app.layout = html.Div([
     html.Div(id='page-content'),
     children=[
         html.Div(
-            id="page-content",#header
+            id="header",#header
             children=[
                 html.Img(id="logo", src="Logo.Cross.Validated.png"),
                 html.H4(children="Rate of US Poison-Induced Deaths"),
