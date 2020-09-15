@@ -8,9 +8,9 @@ from app import server
 from layouts import inflacion, Dinero, Empleo, Actividad, SectorPúblico
 import pandas as pd
 
-app.layout = html.Div([ bgcolor="#1f2630"
+app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
-    html.Div(id='page-content')])
+    html.Div(id='page-content', style={'color' : "#1f2630"})])
         #children=[
             #html.Img(id="logo", src="Logo.Cross.Validated.png"),
             #html.H4(children="Rate of US Poison-Induced Deaths"),
