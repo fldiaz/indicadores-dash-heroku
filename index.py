@@ -17,6 +17,7 @@ import pandas as pd
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False,
+    html.Div(id='page-content'),
     children=[
         html.Div(
             id="page-content",#header
