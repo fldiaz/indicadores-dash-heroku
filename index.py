@@ -31,7 +31,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, [
 
 
 index_page = html.Div([
-    html.Img(id="logo", src=app.get_asset_url("Logo.Cross.Validated.png"),
+    html.Img(id="logo", src=app.get_asset_url("Logo.Cross.Validated.png")),
     html.H4(children= 'Indicadores Económicos de Argentina', style={'color': '#0099e5'}),
     html.Div([
         html.P(
