@@ -14,8 +14,9 @@ import pandas as pd
 
 # App layout
 
+
 app.layout = html.Div([
-    dcc.Location(id='url', refresh=False),
+    dcc.Location(id='url', refresh=False,
     children=[
         html.Div(
             id="header",
@@ -30,7 +31,7 @@ app.layout = html.Div([
                     (undetermined intent).",
                 ),
             ],
-        )]])
+        )])])
 
 index_page = html.Div([
     html.H1('Indicadores Económicos de Argentina', style={'color': '#0099e5'}),
