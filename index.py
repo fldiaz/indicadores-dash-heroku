@@ -15,13 +15,14 @@ app.layout = html.Div([
 
 
 
-
-
-
 index_page = html.Div([
     html.H1('Indicadores Económicos de Argentina', style={'color': '#0099e5'}),
     html.Div([
-        html.P('Elaboración propia en base a última información publicada, a través de la API de Series de Tiempo, por organismos de la Administración Pública Nacional.')
+        html.P(
+         """
+         Elaboración propia en base a última información publicada, a través de la API de Series de Tiempo,
+         por organismos de la Administración Pública Nacional.
+           """)
     ]),
     html.Br(),
     dcc.Link('Precios', href='/page-1'),
