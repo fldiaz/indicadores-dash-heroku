@@ -13,12 +13,7 @@ app.layout = html.Div([
     html.Div(id='page-content')
 ])
 
-##hacer el in
-def header_colors():
-    return {
-        'bg_color': '#0C4142',
-        'font_color': 'white',
-    }
+
 
 
 
