@@ -13,8 +13,60 @@ app.layout = html.Div([
     html.Div(id='page-content')
 ])
 
-##hacer el indice
+##hacer el in
+def header_colors():
+    return {
+        'bg_color': '#0C4142',
+        'font_color': 'white',
+    }
 
+def layout():
+    return html.Div(id='alignment-body', className='app-body', children=[
+        html.Div([
+            html.Div(id='alignment-control-tabs', className='control-tabs', children=[
+                dcc.Tabs(
+                    id='alignment-tabs', value='what-is',
+                    children=[
+                        dcc.Tab(
+                            label='About',
+                            value='what-is',
+                            children=html.Div(className='control-tab', children=[
+                                html.H4(
+                                    className='what-is',
+                                    children='What is Alignment Viewer?'
+                                ),
+                                html.P(
+                                    """
+                                    The Alignment Viewer (MSA) component is used to align
+                                    multiple genomic or proteomic sequences from a FASTA or
+                                    Clustal file. Among its extensive set of features,
+                                    the multiple sequence alignment viewer can display
+                                    multiple subplots showing gap and conservation info,
+                                    alongside industry standard colorscale support and
+                                    consensus sequence. No matter what size your alignment
+                                    is, Alignment Viewer is able to display your genes or
+                                    proteins snappily thanks to the underlying WebGL
+                                    architecture powering the component. You can quickly
+                                    scroll through your long sequence with a slider or a
+                                    heatmap overview.
+                                    """
+                                ),
+                                html.P(
+                                    """
+                                    Note that the AlignmentChart only returns a chart of
+                                    the sequence, while AlignmentViewer has integrated
+                                    controls for colorscale, heatmaps, and subplots allowing
+                                    you to interactively control your sequences.
+                                    """
+                                ),
+                                html.P(
+                                    """
+                                    Read more about the component here:
+                                    https://github.com/plotly/react-alignment-viewer
+                                    """
+                                ),
+                            ])
+                        )}
 
 index_page = html.Div([
     html.H1('Indicadores Económicos de Argentina', style={'color': '#0099e5'}),
