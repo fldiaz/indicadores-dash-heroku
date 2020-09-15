@@ -8,9 +8,14 @@ from app import server
 from layouts import inflacion, Dinero, Empleo, Actividad, SectorPúblico
 import pandas as pd
 
-app.layout = html.Div([
+colors = {
+'background': '#3F6097',
+'text': '#FFFFFF'
+}
+
+app.layout = html.Div(style={'backgroundColor': colors['background']}, [
     dcc.Location(id='url', refresh=False),
-    html.Div(id='page-content', style={'color' : "#1f2630"})])
+    html.Div(id='page-content', children= 'Indicadores Económicos de Argentina', style={'color': '#0099e5'})])
         #children=[
             #html.Img(id="logo", src="Logo.Cross.Validated.png"),
             #html.H4(children="Rate of US Poison-Induced Deaths"),
