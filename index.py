@@ -8,12 +8,29 @@ from app import server
 from layouts import inflacion, Dinero, Empleo, Actividad, SectorPúblico
 import pandas as pd
 
-app.layout = html.Div([
-    dcc.Location(id='url', refresh=False),
-    html.Div(id='page-content')
-])
+#app.layout = html.Div([
+    #dcc.Location(id='url', refresh=False),
+    #html.Div(id='page-content')])
 
+# App layout
 
+app.layout = html.Div(
+    id="root",
+    children=[
+        html.Div(
+            id="header",
+            children=[
+                html.Img(id="logo", src=app.get_asset_url("Logo.Cross.Validated.png")),
+                html.H4(children="Rate of US Poison-Induced Deaths"),
+                html.P(
+                    id="description",
+                    children="† Deaths are classified using the International Classification of Diseases, \
+                    Tenth Revision (ICD–10). Drug-poisoning deaths are defined as having ICD–10 underlying \
+                    cause-of-death codes X40–X44 (unintentional), X60–X64 (suicide), X85 (homicide), or Y10–Y14 \
+                    (undetermined intent).",
+                ),
+            ],
+        )
 
 index_page = html.Div([
     html.H1('Indicadores Económicos de Argentina', style={'color': '#0099e5'}),
