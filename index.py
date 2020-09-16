@@ -9,53 +9,50 @@ from layouts import inflacion, Dinero, Empleo, Actividad, SectorPúblico
 import pandas as pd
 
 colors = {
-'background': '#3F6097',
+'background': '#1F2630',
 'text': '#FFFFFF'
 }
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
-    html.Div(id='page-content', children= 'Indicadores Económicos de Argentina', style={'color': '#0099e5'})],
+    html.Div(id='page-content')],
     style={'backgroundColor': colors['background']})
-        #children=[
-            #html.Img(id="logo", src="Logo.Cross.Validated.png"),
-            #html.H4(children="Rate of US Poison-Induced Deaths"),
-            #html.P(
-                #id="description",
-                #children="† Deaths are classified using the International Classification of Diseases, \
-                #Tenth Revision (ICD–10). Drug-poisoning deaths are defined as having ICD–10 underlying \
-                #cause-of-death codes X40–X44 (unintentional), X60–X64 (suicide), X85 (homicide), or Y10–Y14 \
-                #(undetermined intent).",
-
 
 # App layout
 
+index_page = html.Div(
+    id='root',
+    children=[
+        html.Div(id='header',
+        children=[
+            #html.Img(src= app.get_asset_url('Logo.Cross.Validated.PNG')),
+            html.H4(children='Indicadores Económicos de Argentina', style={'color': '#FFFFFF'}),
+            html.P(
+                 """
+                 Elaboración propia en base a última información publicada, \
+                 a través de la API de Series de Tiempo,
+                 por organismos de la Administración Pública Nacional.
+                   """, style={'color': '#FFFFFF'})]),
+        html.Div(id='index',
+        children=[
+            dcc.Link('Precios', href='/page-1'),
+            html.Br(),
+            dcc.Link('Empleo e Ingresos', href='/page-2'),
+            html.Br(),
+            dcc.Link('Dinero y Bancos', href='/page-3'),
+            html.Br(),
+            dcc.Link('Actividad', href='/page-4'),
+            html.Br(),
+            dcc.Link('Sector Público', href='/page-5'),
+            html.Br()]),
 
-index_page = html.Div([
-    html.Img(id="logo", src=app.get_asset_url("Logo.Cross.Validated.png")),
-    html.H4(children= 'Indicadores Económicos de Argentina', style={'color': '#0099e5'}),
-    html.Div([
-        html.P(
-         """
-         Elaboración propia en base a última información publicada, \
-         a través de la API de Series de Tiempo,
-         por organismos de la Administración Pública Nacional.
-           """)
-    ]),
-    html.Br(),
-    dcc.Link('Precios', href='/page-1'),
-    html.Br(),
-    dcc.Link('Empleo e Ingresos', href='/page-2'),
-    html.Br(),
-    dcc.Link('Dinero y Bancos', href='/page-3'),
-    html.Br(),
-    dcc.Link('Actividad', href='/page-4'),
-    html.Br(),
-    dcc.Link('Sector Público', href='/page-5'),
-    html.Br(),
-    html.P('Última actualización: '), pd.to_datetime('today'),
-    html.P('Consultas: fldiaz@crossvalidated.com.ar', style={'color': '#0099e5'}),
-    ])
+        html.Div(id='foot',
+        children=[
+            #html.P('Última actualización: ', style={'color': '#FFFFFF'}), pd.to_datetime('today'),
+            html.P('Consultas: fldiaz@crossvalidated.com.ar', style={'color': '#FFFFFF'}),
+            ]),
+        html.P(),
+            ])
 
 
 
