@@ -353,6 +353,8 @@ tasasint = go.Figure(data=tasas,layout=layouttasas)
 depoyprest=pd.read_csv('datos/depoyprest.csv', index_col='indice_tiempo')
 depoyprest.rename(columns={'depositos_totales_pesos_privado': 'Depósitos del Sector Privado', 'prestamos_al_sector_privado_pesos': 'Préstamos al Sector Privado'}, inplace=True)
 depoyprest=depoyprest/1000
+
+
 reservas=pd.read_csv('datos/reservas.csv', index_col='indice_tiempo')
 reservas.rename(columns={'reservas_internacionales_bcra_saldos':'Reservas BCRA'},inplace=True)
 
@@ -376,7 +378,7 @@ Dinero=html.Div([
 
     dcc.Graph(id='reservas', figure={'data':[go.Bar(
     x = reservas.index,
-    y = reservas['reservas_internacionales_dolares'])],
+    y = reservas['Reservas BCRA'])],
         'layout': go.Layout(
         title = 'Reservas BCRA, promedio de saldos diarios',
         xaxis = {'title': 'Período'},
