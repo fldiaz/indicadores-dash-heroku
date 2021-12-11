@@ -9,7 +9,7 @@ from layouts import inflacion, Dinero, Empleo, Actividad, SectorPúblico
 import pandas as pd
 
 colors = {
-'background': '#1F2630',
+'background': '#FFFFFF',
 'text': '#FFFFFF'
 }
 
