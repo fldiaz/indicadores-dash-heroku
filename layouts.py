@@ -146,7 +146,7 @@ inflacion = html.Div([
                 title = 'Índice de precios al consumidor. Variaciones mensuales, según categorías. Total nacional',
                 xaxis = {'title': 'Período'},
                 yaxis = {'title': 'Var.mensual %'},
-                hovermode='closest')}),
+                hovermode='closest',traceorder='normal')}),
     dcc.Graph(id='ipcxcomponente', figure={'data': [go.Scatter(
     x = ipcxcomponente.index,
     y = compute_anual_variation(ipcxcomponente[col])*100,  mode = 'markers+lines', name=col) for col in ipcxcomponente.columns],

@@ -10,7 +10,7 @@ import pandas as pd
 
 colors = {
 'background': '#FFFFFF',
-'text': '#FFFFFF'
+'text': '#292A30'
 }
 
 app.layout = html.Div([
@@ -48,7 +48,7 @@ index_page = html.Div(
 
         html.Div(id='foot',
         children=[
-            #html.P('Última actualización: ', style={'color': '#FFFFFF'}), pd.to_datetime('today'),
+            html.P('Última actualización: ', style={'color': '#FFFFFF'}), pd.to_datetime('today'),
             html.P('Consultas: fldiaz@crossvalidated.com.ar', style={'color': '#FFFFFF'}),
             ]),
         html.P(),
