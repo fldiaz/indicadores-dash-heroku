@@ -4,7 +4,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 from app import app
 #para ver en localhost tengo que sacarle la linea del server, acá y en app.
-from app import server
+#from app import server
 from layouts import inflacion, Dinero, Empleo, Actividad, SectorPúblico
 import pandas as pd
 
